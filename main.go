@@ -11,6 +11,9 @@ import (
 	"github.com/danskeren/note.delivery/templates"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/cors"
+	limiter "github.com/ulule/limiter/v3"
+	"github.com/ulule/limiter/v3/drivers/middleware/stdlib"
+	"github.com/ulule/limiter/v3/drivers/store/memory"
 )
 
 func main() {
@@ -25,14 +28,25 @@ func main() {
 	})
 	r.Use(cors.Handler)
 
-	r.Get("/", indexGET)
-	r.Get("/protect-your-privacy", protectYourPrivacyGET)
-	r.Get("/privacy-policy", privacyPolicyGET)
-	r.Post("/", note.CreateNote)
-	r.Get("/{noteid}", note.NoteGET)
-	r.Post("/{noteid}", note.UnlockNotePOST)
-	r.Post("/{noteid}/delete", note.DeleteNotePOST)
-	r.NotFound(notFoundGET)
+	store := memory.NewStore()
+	rate, err := limiter.NewRateFromFormatted("500-H")
+	if err != nil {
+		panic(err)
+	}
+	limiterMiddleware := stdlib.NewMiddleware(limiter.New(store, rate, limiter.WithTrustForwardHeader(true)))
+	limiterMiddleware.OnLimitReached = rateLimitGET
+
+	r.Group(func(r chi.Router) {
+		r.Use(limiterMiddleware.Handler)
+		r.Get("/", indexGET)
+		r.Get("/protect-your-privacy", protectYourPrivacyGET)
+		r.Get("/privacy-policy", privacyPolicyGET)
+		r.Post("/", note.CreateNote)
+		r.Get("/{noteid}", note.NoteGET)
+		r.Post("/{noteid}", note.UnlockNotePOST)
+		r.Post("/{noteid}/delete", note.DeleteNotePOST)
+		r.NotFound(notFoundGET)
+	})
 
 	currentDir, err := os.Getwd()
 	if err != nil {
@@ -91,6 +105,14 @@ func protectYourPrivacyGET(w http.ResponseWriter, r *http.Request) {
 func privacyPolicyGET(w http.ResponseWriter, r *http.Request) {
 	commonData := templates.ReadCommonData(w, r)
 	templates.Render(w, "privacy-policy.html", map[string]interface{}{
+		"Common": commonData,
+	})
+}
+
+func rateLimitGET(w http.ResponseWriter, r *http.Request) {
+	commonData := templates.ReadCommonData(w, r)
+	commonData.MetaTitle = "Rate Limited"
+	templates.Render(w, "rate-limit.html", map[string]interface{}{
 		"Common": commonData,
 	})
 }
