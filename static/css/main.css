@@ -1,0 +1,279 @@
+@font-face {
+  font-family: "OpenSans";
+  src: url(/static/fonts/OpenSans-Regular.ttf) format("truetype");
+}
+* {
+  font-family: 'OpenSans', sans-serif;
+}
+html {
+  height: 100%;
+  min-height: 100%;
+  background-color: #F8F8F8;
+}
+body {
+  max-width: 90%;
+  margin: 0 auto;
+  height: 100%;
+  min-height: 100%;
+}
+a {
+  color: #315EEE;
+}
+a:hover {
+  text-decoration: none;
+}
+h1,h2,h3,h4,h5,h6 {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+code {
+  font-family: monospace;
+}
+hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+}
+
+header {
+  margin: 1rem 0;
+}
+header a {
+  color: #2A2B32;
+  font-weight: 600;
+  font-size: 1.5em;
+  text-decoration: none;
+}
+header a img {
+  margin-right: .25rem;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+.sticky-footer {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+main .container {
+  max-width: 100rem;
+  margin: auto;
+  word-break: break-word;
+}
+
+footer {
+  margin-top: 5rem;
+  margin-bottom: 1rem;
+}
+footer .links {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+svg.code {
+  width: 1rem;
+  height: 1rem;
+  vertical-align: sub;
+  color: #41933E;
+  margin-right: .25rem;
+}
+svg.heart {
+  width: 1rem;
+  height: 1rem;
+  vertical-align: sub;
+  color: #DA3E39;
+  margin: 0 .15rem;
+}
+
+.content {
+  display: grid;
+  grid-template-areas: 
+    "note note note"
+    "password checkbox submit";
+  grid-template-columns: max-content max-content 1fr;
+  align-items: center;
+}
+
+.note {
+  grid-area: note;
+  box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  margin-bottom: 1rem;
+}
+.note textarea {
+  display: block;
+  border: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: auto;
+  width: 100%;
+  padding: 1rem;
+  resize: vertical;
+}
+
+.password {
+  grid-area: password;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  margin-right: 2rem;
+}
+input {
+  border: none;
+  height: 2.25rem;
+  padding: 0 1rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.checkbox {
+  grid-area: checkbox;
+  margin-right: 2rem;
+}
+.checkbox label {
+  display: flex;
+  position: relative;
+  padding-left: 1.5rem;
+  cursor: pointer;
+}
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.checkbox .checkmark {
+  position: absolute;
+  left: 0;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px -1px #abb0ba;
+  align-self: center;
+}
+.checkbox input:checked ~ .checkmark::after {
+  display: block;
+}
+.checkbox .checkmark::after {
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  content: "";
+  position: absolute;
+  display: none;
+}
+.checkbox input:checked ~ .checkmark {
+  background-color: #DA3E39;
+}
+
+.submit {
+  grid-area: submit;
+}
+.submit button {
+  background: #EB6671;
+  border: none;
+  cursor: pointer;
+  height: 2.25rem;
+  color: white;
+  border-radius: .25rem;
+}
+.submit button:hover {
+  background: #EB525E;
+}
+
+
+@media (max-width:600px) {
+  .content { 
+    grid-template-areas: 
+      "note note"
+      "password checkbox"
+      "submit submit";
+    grid-template-columns: max-content 1fr;
+  }
+  .content .password, .content .checkbox {
+    margin-bottom: 1rem;
+  }
+}
+@media (max-width:475px) {
+  .content { 
+    grid-template-areas: 
+      "note"
+      "password"
+      "checkbox"
+      "submit";
+    grid-template-columns: 1fr;
+  }
+  .password {
+    margin-right: 0;
+  }
+  .password input {
+    width: 100%;
+  }
+  .checkbox {
+    margin-bottom: 1rem;
+  }
+}
+
+.flashes p {
+  text-align: center;
+  padding: .5rem;
+  color: white;
+  background-color: #EB525E;
+  border-radius: .5rem;
+}
+
+
+.delete__container {
+  margin-top: 10rem;
+}
+.delete {
+  display: grid;
+  grid-template-areas: "confirm submit";
+  grid-template-columns: max-content max-content;
+  align-items: center;
+}
+.confirm {
+  grid-area: confirm;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  margin-right: 2rem;
+}
+@media (max-width:475px) {
+  .delete { 
+    grid-template-areas: 
+      "confirm"
+      "submit";
+    grid-template-columns: 1fr;
+  }
+  .confirm {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+  .confirm input {
+    width: 100%;
+  }
+}
+
+.unlock {
+  display: grid;
+  grid-template-areas: "password submit";
+  grid-template-columns: max-content max-content;
+  align-items: center;
+}
+@media (max-width:475px) {
+  .unlock { 
+    grid-template-areas: 
+      "password"
+      "submit";
+    grid-template-columns: 1fr;
+  }
+  .password {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+  .password input {
+    width: 100%;
+  }
+}
