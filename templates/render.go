@@ -31,6 +31,8 @@ func init() {
 	tmpls["privacy-policy.html"] = template.Must(template.New("layout").Parse(layout))
 	template.Must(tmpls["privacy-policy.html"].New("privacy-policy").Parse(minifyHTML(tmpl.PrivacyPolicyHTML)))
 
+	tmpls["rate-limit.html"] = template.Must(template.New("layout").Parse(layout))
+	template.Must(tmpls["rate-limit.html"].New("rate-limit").Parse(minifyHTML(tmpl.RateLimitHTML)))
 	tmpls["not-found.html"] = template.Must(template.New("layout").Parse(layout))
 	template.Must(tmpls["not-found.html"].New("not-found").Parse(minifyHTML(tmpl.NotFoundHTML)))
 }
