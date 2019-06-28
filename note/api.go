@@ -6,9 +6,9 @@ import (
 	"html/template"
 	"net/http"
 
-	"github.com/danskeren/config"
-	"github.com/danskeren/cookie"
-	"github.com/danskeren/generate"
+	"github.com/packago/config"
+	"github.com/packago/cookie"
+	"github.com/packago/generate"
 	"github.com/danskeren/note.delivery/db"
 	"github.com/danskeren/note.delivery/templates"
 	"github.com/dgraph-io/badger"

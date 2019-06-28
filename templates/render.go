@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 
-	"github.com/danskeren/config"
+	"github.com/packago/config"
 	"github.com/danskeren/note.delivery/templates/tmpl"
 	"github.com/tdewolff/minify"
 	"github.com/tdewolff/minify/css"
