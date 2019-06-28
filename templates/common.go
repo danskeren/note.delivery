@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/danskeren/config"
-	"github.com/danskeren/cookie"
+	"github.com/packago/config"
+	"github.com/packago/cookie"
 	"github.com/danskeren/note.delivery/db"
 	"github.com/gorilla/csrf"
 )

@@ -1,8 +1,8 @@
 package db
 
 import (
-	"github.com/danskeren/config"
-	"github.com/danskeren/cookie"
+	"github.com/packago/config"
+	"github.com/packago/cookie"
 )
 
 func init() {

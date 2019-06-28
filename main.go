@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/danskeren/config"
+	"github.com/packago/config"
 	"github.com/danskeren/note.delivery/note"
 	"github.com/danskeren/note.delivery/templates"
 	"github.com/go-chi/chi"
