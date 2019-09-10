@@ -23,7 +23,9 @@ const NoteHTML = `
 
 {{ else }}
 
-{{ .Note }}
+<div class="notecontent">
+  {{ .Note }}
+</div>
 
 {{ if .CanDelete }}
 <div class="delete__container">
