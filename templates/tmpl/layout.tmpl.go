@@ -31,12 +31,17 @@ const LayoutHTML = `
 <body>
   <div class="sticky-footer">
     <header>
-      <a href="/">
-        <img src="/static/images/logo.png">Note.Delivery
-      </a>
+      <div class="wrapper">
+        <div class="promo">Liberate Hong Kong</div>
+          <nav>
+            <a href="/">
+              <img src="/static/images/logo.png">Note.Delivery
+            </a>
+        </nav>
+      </div>
     </header>
  
-    <main>
+    <main class="wrapper">
       <div class="container">
         <div class="flashes">
           {{ range .Common.Flashes }}
@@ -47,7 +52,7 @@ const LayoutHTML = `
       </div>
     </main>
 
-    <footer>
+    <footer class="wrapper">
       <div class="links">
         <div>
           No tracking. No bloat. <a href="https://github.com/danskeren/note.delivery" target="_blank">Open Source</a>.
