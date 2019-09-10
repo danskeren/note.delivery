@@ -8,12 +8,9 @@ require (
 	github.com/go-chi/chi v4.0.2+incompatible
 	github.com/go-chi/cors v1.0.0
 	github.com/gorilla/csrf v1.5.1
-	github.com/microcosm-cc/bluemonday v1.0.2
 	github.com/packago/config v0.0.0-20190627203747-861250ba6cac
 	github.com/packago/cookie v0.0.0-20190627203510-70e29fbb2a1f
 	github.com/packago/generate v0.0.0-20190627204322-bb70f0056f92
-	github.com/russross/blackfriday v2.0.0+incompatible
-	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	github.com/tdewolff/minify v2.3.6+incompatible
 	github.com/tdewolff/parse v2.3.4+incompatible // indirect
 	github.com/tdewolff/test v1.0.0 // indirect

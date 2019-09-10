@@ -58,6 +58,7 @@ main .container {
   max-width: 100rem;
   margin: auto;
   word-break: break-word;
+  white-space: pre-wrap;
 }
 
 footer {

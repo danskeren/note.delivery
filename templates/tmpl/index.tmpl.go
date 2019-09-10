@@ -6,7 +6,7 @@ const IndexHTML = `
 <form class="content" action="/" method="post">
   <div class="note">
     <textarea name="note" rows="10" placeholder="
-# Markdown is supported
+Be Water, My Friend
 
 [Note.Delivery is open source](https://github.com/danskeren/note.delivery), licensed under AGPLv3.
 

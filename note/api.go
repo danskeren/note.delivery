@@ -6,15 +6,13 @@ import (
 	"html/template"
 	"net/http"
 
-	"github.com/packago/config"
-	"github.com/packago/cookie"
-	"github.com/packago/generate"
 	"github.com/danskeren/note.delivery/db"
 	"github.com/danskeren/note.delivery/templates"
 	"github.com/dgraph-io/badger"
 	"github.com/go-chi/chi"
-	"github.com/microcosm-cc/bluemonday"
-	"github.com/russross/blackfriday"
+	"github.com/packago/config"
+	"github.com/packago/cookie"
+	"github.com/packago/generate"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -60,7 +58,7 @@ func NoteGET(w http.ResponseWriter, r *http.Request) {
 		"CanDelete":         note.CanDelete,
 		"Locked":            passwordProtected,
 		"PasswordProtected": passwordProtected,
-		"Note":              template.HTML(note.Content),
+		"Note":              note.Content,
 	})
 }
 
@@ -99,11 +97,7 @@ func CreateNote(w http.ResponseWriter, r *http.Request) {
 		break
 	}
 
-	unsafeContent := blackfriday.Run([]byte(
-		r.PostFormValue("note")),
-		blackfriday.WithExtensions(blackfriday.HardLineBreak|blackfriday.FencedCode),
-	)
-	note.Content = string(bluemonday.UGCPolicy().SanitizeBytes(unsafeContent))
+	note.Content = r.PostFormValue("note")
 
 	noteBytes, err := json.Marshal(note)
 	if err != nil {
