@@ -6,14 +6,14 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/packago/config"
-	"github.com/danskeren/note.delivery/note"
-	"github.com/danskeren/note.delivery/templates"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/cors"
+	"github.com/packago/config"
 	limiter "github.com/ulule/limiter/v3"
 	"github.com/ulule/limiter/v3/drivers/middleware/stdlib"
 	"github.com/ulule/limiter/v3/drivers/store/memory"
+	"note.delivery/note"
+	"note.delivery/templates"
 )
 
 func main() {
@@ -39,7 +39,6 @@ func main() {
 	r.Group(func(r chi.Router) {
 		r.Use(limiterMiddleware.Handler)
 		r.Get("/", indexGET)
-		r.Get("/protect-your-privacy", protectYourPrivacyGET)
 		r.Get("/privacy-policy", privacyPolicyGET)
 		r.Post("/", note.CreateNote)
 		r.Get("/{noteid}", note.NoteGET)
@@ -91,13 +90,6 @@ func notFoundGET(w http.ResponseWriter, r *http.Request) {
 func indexGET(w http.ResponseWriter, r *http.Request) {
 	commonData := templates.ReadCommonData(w, r)
 	templates.Render(w, "index.html", map[string]interface{}{
-		"Common": commonData,
-	})
-}
-
-func protectYourPrivacyGET(w http.ResponseWriter, r *http.Request) {
-	commonData := templates.ReadCommonData(w, r)
-	templates.Render(w, "protect-your-privacy.html", map[string]interface{}{
 		"Common": commonData,
 	})
 }

@@ -6,14 +6,14 @@ import (
 	"html/template"
 	"net/http"
 
-	"github.com/danskeren/note.delivery/db"
-	"github.com/danskeren/note.delivery/templates"
-	"github.com/dgraph-io/badger"
+	"github.com/dgraph-io/badger/v2"
 	"github.com/go-chi/chi"
 	"github.com/packago/config"
 	"github.com/packago/cookie"
 	"github.com/packago/generate"
 	"golang.org/x/crypto/bcrypt"
+	"note.delivery/db"
+	"note.delivery/templates"
 )
 
 const (

@@ -1,3 +1,5 @@
 config.json
 badger.db
 gin-bin
+static/main.min.css
+deploy

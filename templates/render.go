@@ -7,10 +7,10 @@ import (
 	"log"
 
 	"github.com/packago/config"
-	"github.com/danskeren/note.delivery/templates/tmpl"
 	"github.com/tdewolff/minify"
 	"github.com/tdewolff/minify/css"
 	"github.com/tdewolff/minify/html"
+	"note.delivery/templates/tmpl"
 )
 
 var tmpls map[string]*template.Template = make(map[string]*template.Template)
@@ -26,8 +26,6 @@ func init() {
 	tmpls["note.html"] = template.Must(template.New("layout").Parse(layout))
 	template.Must(tmpls["note.html"].New("note").Parse(minifyHTML(tmpl.NoteHTML)))
 
-	tmpls["protect-your-privacy.html"] = template.Must(template.New("layout").Parse(layout))
-	template.Must(tmpls["protect-your-privacy.html"].New("protect-your-privacy").Parse(minifyHTML(tmpl.ProtectYourPrivacyHTML)))
 	tmpls["privacy-policy.html"] = template.Must(template.New("layout").Parse(layout))
 	template.Must(tmpls["privacy-policy.html"].New("privacy-policy").Parse(minifyHTML(tmpl.PrivacyPolicyHTML)))
 
