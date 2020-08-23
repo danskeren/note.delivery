@@ -22,7 +22,7 @@ const PrivacyPolicyHTML = `
   Note.Delivery also use AES-256 encrypted cookies for the sole purpose of displaying potential error messages. You can easily delete and block the cookies without breaking anything (besides the fact that potential error messages won't be displayed if cookies are being blocked).
 </p>
 <p>
-  If you encounter any problems, or have any questions, then feel free to <a href="https://github.com/danskeren/note.delivery/issues/new" target="_blank">open an issue on GitHub</a>.
+  If you encounter any problems, or have any questions, then feel free to <a href="https://note.deliveryissues/new" target="_blank">open an issue on GitHub</a>.
 </p>
 {{ end }}
 `

@@ -6,11 +6,11 @@ import (
 	"io/ioutil"
 	"log"
 
-	"github.com/danskeren/note.delivery/templates/tmpl"
 	"github.com/packago/config"
 	"github.com/tdewolff/minify"
 	"github.com/tdewolff/minify/css"
 	"github.com/tdewolff/minify/html"
+	"note.delivery/templates/tmpl"
 )
 
 var tmpls map[string]*template.Template = make(map[string]*template.Template)
